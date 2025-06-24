@@ -1,0 +1,27 @@
+kind: Subgraph
+version: v2
+definition:
+  name: app
+  generator:
+    rootPath: .
+    namingConvention: none
+  includePaths:
+    - metadata
+  envMapping:
+    APP_MNGDB_AUTHORIZATION_HEADER:
+      fromEnv: APP_MNGDB_AUTHORIZATION_HEADER
+    APP_MNGDB_READ_URL:
+      fromEnv: APP_MNGDB_READ_URL
+    APP_MNGDB_WRITE_URL:
+      fromEnv: APP_MNGDB_WRITE_URL
+    APP_PGDB_AUTHORIZATION_HEADER:
+      fromEnv: APP_PGDB_AUTHORIZATION_HEADER
+    APP_PGDB_READ_URL:
+      fromEnv: APP_PGDB_READ_URL
+    APP_PGDB_WRITE_URL:
+      fromEnv: APP_PGDB_WRITE_URL
+  connectors:
+    - path: connector/mngdb/connector.yaml
+      connectorLinkName: mngdb
+    - path: connector/pgdb/connector.yaml
+      connectorLinkName: pgdb
