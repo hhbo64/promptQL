@@ -138,6 +138,10 @@ kind: Model
 version: v2
 definition:
   name: sanctions
+  description: >
+    List of sanctioned entities and individuals published by regulatory authorities.
+    This data includes identifying details, listing programs, and metadata about the
+    type and date of sanctioning. Useful for compliance, screening, and due diligence.
   objectType: sanctions
   source:
     dataConnectorName: mngdb
@@ -161,6 +165,21 @@ definition:
       queryRootField: sanctions_aggregate
       subscription:
         rootField: sanctions_aggregate
+  fields:
+    - name: _id
+      description: "Unique identifier for the sanctions record (MongoDB ObjectId)"
+    - name: address
+      description: "Known or last known address of the sanctioned entity or individual"
+    - name: entity_name
+      description: "Full name of the sanctioned entity or individual"
+    - name: entity_type
+      description: "Classification of the entity (e.g., 'individual', 'company', 'organization')"
+    - name: list_type
+      description: "Name of the list the entity appears on (e.g., 'OFAC SDN', 'UN Consolidated')"
+    - name: listed_date
+      description: "Date the entity was officially added to the sanctions list"
+    - name: program
+      description: "Sanctions program or authority under which the listing was made (e.g., 'Magnitsky Act')"
 
 ---
 kind: ModelPermissions

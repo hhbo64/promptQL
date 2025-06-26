@@ -160,6 +160,10 @@ kind: Model
 version: v2
 definition:
   name: public_customers
+  description: >
+    Customer registry data for a financial institution. Tracks key KYC attributes
+    such as identity, nationality, risk classification, and screening flags like
+    blacklisted or PEP (Politically Exposed Person) status.
   objectType: public_customers
   source:
     dataConnectorName: pgdb
@@ -178,6 +182,25 @@ definition:
       queryRootField: public_customers_aggregate
       subscription:
         rootField: public_customers_aggregate
+  fields:
+    - name: account
+      description: "Internal numeric ID representing the customer's financial account"
+    - name: address
+      description: "Customer's residential or mailing address"
+    - name: blacklisted
+      description: "Boolean flag indicating whether the customer is banned or restricted"
+    - name: customer_id
+      description: "Primary identifier for the customer record in the system"
+    - name: dob
+      description: "Date of birth of the customer"
+    - name: name
+      description: "Full legal name of the customer"
+    - name: nationality
+      description: "Country of citizenship or legal nationality"
+    - name: pep_status
+      description: "Indicates if the customer is a Politically Exposed Person (PEP)"
+    - name: risk_level
+      description: "Risk rating assigned to the customer (e.g., low, medium, high)"
 
 ---
 kind: ModelPermissions

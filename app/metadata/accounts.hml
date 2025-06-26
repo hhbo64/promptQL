@@ -278,6 +278,10 @@ kind: Model
 version: v2
 definition:
   name: accounts
+  description: >
+    Financial account information including identity, entity classification,
+    associated risk level, contact details, and transaction constraints.
+    Supports Know Your Customer (KYC) and risk assessment processes.
   objectType: accounts
   source:
     dataConnectorName: mngdb
@@ -301,6 +305,21 @@ definition:
       queryRootField: accounts_aggregate
       subscription:
         rootField: accounts_aggregate
+  fields:
+    - name: _id
+      description: "MongoDB unique identifier for the account document"
+    - name: account_id
+      description: "System-assigned numeric identifier for the account"
+    - name: contact_information
+      description: "Nested object containing address, email, and phone number of the account holder"
+    - name: entity_type
+      description: "Classification of the account holder (e.g., 'individual', 'corporation')"
+    - name: name
+      description: "Full legal name associated with the account"
+    - name: risk
+      description: "Risk classification for the account (e.g., 'low', 'medium', 'high')"
+    - name: transaction_limits
+      description: "Object defining transaction cap values such as max amount and number of transactions"
 
 ---
 kind: ModelPermissions

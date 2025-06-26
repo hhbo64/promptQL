@@ -187,6 +187,10 @@ kind: Model
 version: v2
 definition:
   name: public_financial_transfers
+  description: >
+    Records of financial transactions including amounts, currency types, sender and receiver details,
+    and potential indicators of money laundering. Supports AML workflows such as transaction tracing,
+    typology classification, and cross-border analysis.
   objectType: public_financial_transfers
   source:
     dataConnectorName: pgdb
@@ -205,6 +209,33 @@ definition:
       queryRootField: public_financial_transfers_aggregate
       subscription:
         rootField: public_financial_transfers_aggregate
+  fields:
+    - name: amount
+      description: "The monetary value of the transaction in the payment currency"
+    - name: date
+      description: "The calendar date on which the transaction occurred"
+    - name: is_laundering
+      description: "Boolean flag indicating if the transaction is suspected or confirmed as laundering"
+    - name: laundering_type
+      description: "Classification of the laundering method used (e.g., structuring, layering)"
+    - name: payment_currency
+      description: "Currency in which the payment was made (e.g., USD, EUR)"
+    - name: payment_type
+      description: "Mode of transaction such as wire, ACH, or check"
+    - name: received_currency
+      description: "Currency received by the beneficiary (if different from payment currency)"
+    - name: receiver_account
+      description: "Internal account ID of the party receiving the funds"
+    - name: receiver_bank_location
+      description: "Physical or registered location of the receiving bank"
+    - name: sender_account
+      description: "Internal account ID of the party initiating the transaction"
+    - name: sender_bank_location
+      description: "Physical or registered location of the sending bank"
+    - name: time
+      description: "Time of day when the transaction was processed (local or UTC)"
+    - name: transaction_id
+      description: "Unique identifier assigned to the transaction by the financial system"
 
 ---
 kind: ModelPermissions

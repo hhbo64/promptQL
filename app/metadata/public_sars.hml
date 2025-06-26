@@ -124,6 +124,10 @@ kind: Model
 version: v2
 definition:
   name: public_sars
+  description: >
+    Suspicious Activity Reports (SARs) submitted by the financial institution. Each record tracks
+    a flagged transaction or customer with a filing date, stated reason, and review status. Supports AML
+    investigation, reporting obligations, and regulatory compliance analysis.
   objectType: public_sars
   source:
     dataConnectorName: pgdb
@@ -142,6 +146,19 @@ definition:
       queryRootField: public_sars_aggregate
       subscription:
         rootField: public_sars_aggregate
+  fields:
+    - name: customer_id
+      description: "Unique ID of the customer associated with the suspicious activity"
+    - name: filed_date
+      description: "Date and time when the SAR was officially filed"
+    - name: reason
+      description: "Narrative explanation or keyword indicating why the report was submitted"
+    - name: sar_id
+      description: "Unique identifier assigned to each SAR record"
+    - name: status
+      description: "Current review status of the SAR (e.g., 'open', 'under review', 'closed')"
+    - name: transaction_id
+      description: "ID of the specific transaction that triggered the suspicious activity report"
 
 ---
 kind: ModelPermissions

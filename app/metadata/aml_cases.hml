@@ -241,6 +241,9 @@ kind: Model
 version: v2
 definition:
   name: aml_cases
+  description: >
+    Anti-Money Laundering case records including risk scores, alerts, and resolution status.
+    Used for compliance investigations and suspicious activity tracking.
   objectType: aml_cases
   source:
     dataConnectorName: mngdb
@@ -264,6 +267,29 @@ definition:
       queryRootField: aml_cases_aggregate
       subscription:
         rootField: aml_cases_aggregate
+  fields:
+    - name: _id
+      description: "Unique identifier for the AML case (MongoDB ObjectId)"
+    - name: aml_flags
+      description: "Nested indicators of potential money laundering behaviors"
+    - name: amount
+      description: "Transaction amount in USD"
+    - name: beneficiary_address
+      description: "Address of the person or entity receiving the funds"
+    - name: beneficiary_id
+      description: "Unique internal ID for the beneficiary account or user"
+    - name: beneficiary_name
+      description: "Full name of the beneficiary receiving the transaction"
+    - name: originator_address
+      description: "Address of the person or entity sending the funds"
+    - name: originator_id
+      description: "Unique internal ID for the originator account or user"
+    - name: originator_name
+      description: "Full name of the originator initiating the transaction"
+    - name: transaction_date
+      description: "Date and time when the transaction occurred (ISO 8601 format)"
+    - name: transaction_id
+      description: "External or system-generated identifier for the transaction" 
 
 ---
 kind: ModelPermissions
