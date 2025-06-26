@@ -102,6 +102,14 @@ definition:
           - name
           - risk
           - transaction_limits
+    - role: user
+      output:
+        allowedFields:
+          - _id
+          - account_id
+          - entity_type
+          - risk
+          - transaction_limits
 
 ---
 kind: BooleanExpressionType

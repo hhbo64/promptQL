@@ -47,6 +47,15 @@ definition:
           - nationality
           - pep_status
           - risk_level
+    - role: user
+      output:
+        allowedFields:
+          - account
+          - address
+          - blacklisted
+          - customer_id
+          - pep_status
+          - risk_level
 
 ---
 kind: BooleanExpressionType

@@ -41,6 +41,11 @@ definition:
           - list_type
           - listed_date
           - program
+    - role: user
+      output:
+        allowedFields:
+          - _id
+          - listed_date
 
 ---
 kind: BooleanExpressionType
